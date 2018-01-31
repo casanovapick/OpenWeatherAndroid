@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">OpenWeather</string>
+    <string name="forecast_today_hint">enter city name,country</string>
+    <string name="common_celsius">C&#176;</string>
+    <string name="common_fahrenheit">F&#176;</string>
+    <string name="forecast_today_humidity">Humidity:</string>
+    <string name="common_temperature_format">%.2f</string>
+</resources>
