@@ -17,8 +17,7 @@ import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 
 class TodayForecastPresenterTest {
-    @get:Rule
-    val rxJavaRule = RxSchedulersOverrideRule()
+    @get:Rule val rxSchedulersOverrideRule = RxSchedulersOverrideRule()
     lateinit var presenter: TodayForecastPresenter
     @Mock
     lateinit var getTodayWeather: GetTodayWeatherForecast
@@ -48,7 +47,9 @@ class TodayForecastPresenterTest {
     fun getForecast_success_showContent() {
         val data = TodayWeatherForecastData(weatherDescriptionList = listOf())
         val observableResult = Observable.just(GetTodayWeatherForecast.Result(data, isSuccess = true))
+        viewModel.inputCity.set("bangkok")
         given(getTodayWeather.execute(any())).willReturn(observableResult)
+        presenter.getForecast()
         Assert.assertEquals(true, viewModel.isShowContent.get())
     }
 
@@ -56,20 +57,22 @@ class TodayForecastPresenterTest {
     fun getForecast_notFound_alertNotFound() {
         val data = TodayWeatherForecastData(weatherDescriptionList = listOf())
         val observableResult = Observable.just(GetTodayWeatherForecast.Result(data, isSuccess = false))
+        viewModel.inputCity.set("ABC")
         given(getTodayWeather.execute(any())).willReturn(observableResult)
+        presenter.getForecast()
         Assert.assertEquals(false, viewModel.isShowContent.get())
         verify(view).alertNotFound()
     }
 
     @Test
-    fun convertUnit_isDisplayFahrenheit_callConvertToFahrenheit(){
+    fun convertUnit_isDisplayFahrenheit_callConvertToFahrenheit() {
         viewModel.isDisplayFahrenheit.set(true)
         presenter.convertUnit()
         verify(kelvinToFahrenheit).convert(any())
     }
 
     @Test
-    fun convertUnit_isNotDisplayFahrenheit_callConvertToCelsius(){
+    fun convertUnit_isNotDisplayFahrenheit_callConvertToCelsius() {
         viewModel.isDisplayFahrenheit.set(false)
         presenter.convertUnit()
         verify(kelvinToCelsius).convert(any())

@@ -8,15 +8,23 @@ import org.junit.runner.Description
 import org.junit.runners.model.Statement
 
 
+
+
 class RxSchedulersOverrideRule : TestRule {
 
-    override fun apply(base: Statement?, description: Description?): Statement = object : Statement() {
+    override fun apply(base: Statement, description: Description?): Statement = object : Statement() {
+        @Throws(Throwable::class)
         override fun evaluate() {
-            RxJavaPlugins.reset()
-            RxJavaPlugins.setIoSchedulerHandler { Schedulers.trampoline() }
-            RxAndroidPlugins.reset()
-            RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
-            RxAndroidPlugins.setMainThreadSchedulerHandler { Schedulers.trampoline() }
+            RxJavaPlugins.setIoSchedulerHandler { scheduler -> Schedulers.trampoline() }
+            RxJavaPlugins.setComputationSchedulerHandler { scheduler -> Schedulers.trampoline() }
+            RxJavaPlugins.setNewThreadSchedulerHandler { scheduler -> Schedulers.trampoline() }
+            RxAndroidPlugins.setInitMainThreadSchedulerHandler { scheduler -> Schedulers.trampoline() }
+            try {
+                base.evaluate()
+            } finally {
+                RxJavaPlugins.reset()
+                RxAndroidPlugins.reset()
+            }
         }
     }
 }
