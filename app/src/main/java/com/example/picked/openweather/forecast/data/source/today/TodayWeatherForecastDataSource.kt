@@ -1,6 +1,6 @@
-package com.example.picked.openweather.forecast.data.source
+package com.example.picked.openweather.forecast.data.source.today
 
-import com.example.picked.openweather.forecast.data.TodayWeatherForecastData
+import com.example.picked.openweather.forecast.domain.model.TodayWeatherForecastData
 import io.reactivex.Observable
 
 

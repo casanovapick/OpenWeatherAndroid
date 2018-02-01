@@ -13,12 +13,7 @@ class TodayForecastViewModel : ViewModel() {
     val isDisplayFahrenheit = ObservableBoolean()
     val isShowContent = ObservableBoolean()
     var kelvin = 0.0
-    var imageUrl = ObservableField<String>("")
-    var imageId: String = ""
-        set(value) {
-            field = value
-            imageUrl.set("https://openweathermap.org/img/w/$value.png")
-        }
+    var imageId = ObservableField<String>("")
 
 
 }

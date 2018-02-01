@@ -1,4 +1,4 @@
-package com.example.picked.openweather.forecast.data.source.remote
+package com.example.picked.openweather.forecast.data.source.today.remote
 
 import com.example.picked.openweather.retrofit.createApi
 import dagger.Module

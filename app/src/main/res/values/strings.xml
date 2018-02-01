@@ -3,6 +3,12 @@
     <string name="forecast_today_hint">enter city name,country</string>
     <string name="common_celsius">C&#176;</string>
     <string name="common_fahrenheit">F&#176;</string>
+    <string name="common_kelvin">K&#176;</string>
     <string name="forecast_today_humidity">Humidity:</string>
     <string name="common_temperature_format">%.2f</string>
+    <string name="forecast_today_menu_weekly_forecast">Weekly Forecast</string>
+    <string name="common_ok">OK</string>
+    <string name="forecast_today_not_found">Result not found</string>
+    <string name="common_network_error">Network Error</string>
+    <string name="forecast_image_url_format">https://openweathermap.org/img/w/%s.png</string>
 </resources>

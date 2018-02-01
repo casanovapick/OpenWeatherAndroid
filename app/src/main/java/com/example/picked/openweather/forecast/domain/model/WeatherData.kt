@@ -1,8 +1,8 @@
-package com.example.picked.openweather.forecast.data
+package com.example.picked.openweather.forecast.domain.model
 
 import com.google.gson.annotations.SerializedName
 
-data class WeatherInfo(
+data class WeatherData(
 
 	@field:SerializedName("temp")
 	val temp: Double? = null,

@@ -5,6 +5,7 @@ def dependencyGroup(Closure closure) {
 
 def test = dependencyGroup {
     testImplementation 'junit:junit:4.12'
+    testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
 }
 
 def androidTest = dependencyGroup {
@@ -16,6 +17,7 @@ def ui = dependencyGroup {
     def support_version = '26.1.0'
     implementation 'com.android.support:appcompat-v7:' + support_version
     implementation 'com.android.support:cardview-v7:' + support_version
+    implementation 'com.android.support:recyclerview-v7:' + support_version
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 }
 

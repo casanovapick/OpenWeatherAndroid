@@ -1,7 +1,7 @@
-package com.example.picked.openweather.forecast.data.source.remote
+package com.example.picked.openweather.forecast.data.source.today.remote
 
 import com.example.picked.openweather.BuildConfig
-import com.example.picked.openweather.forecast.data.TodayWeatherForecastData
+import com.example.picked.openweather.forecast.domain.model.TodayWeatherForecastData
 import io.reactivex.Observable
 import retrofit2.Response
 import retrofit2.http.GET
